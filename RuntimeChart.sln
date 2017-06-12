@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuntimeChart.Infrastructure", "RuntimeChart.Infrastructure\RuntimeChart.Infrastructure.csproj", "{A597E2EA-ACFD-4397-A3D4-4641CDA3185B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuntimeChart.Service", "RuntimeChart.Service\RuntimeChart.Service.csproj", "{AD070AA9-ECBD-44BA-9F53-B7D73945B747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuntimeChart.Web", "RuntimeChart.Web\RuntimeChart.Web.csproj", "{D9BA2889-A328-40CF-AC6E-B1725EAD45E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A597E2EA-ACFD-4397-A3D4-4641CDA3185B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A597E2EA-ACFD-4397-A3D4-4641CDA3185B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A597E2EA-ACFD-4397-A3D4-4641CDA3185B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A597E2EA-ACFD-4397-A3D4-4641CDA3185B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD070AA9-ECBD-44BA-9F53-B7D73945B747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD070AA9-ECBD-44BA-9F53-B7D73945B747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD070AA9-ECBD-44BA-9F53-B7D73945B747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD070AA9-ECBD-44BA-9F53-B7D73945B747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9BA2889-A328-40CF-AC6E-B1725EAD45E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9BA2889-A328-40CF-AC6E-B1725EAD45E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9BA2889-A328-40CF-AC6E-B1725EAD45E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9BA2889-A328-40CF-AC6E-B1725EAD45E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

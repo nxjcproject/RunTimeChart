@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAnalogData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagValue" type="tns:ArrayOfDecimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDecimal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="decimal" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetAnalogDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetAnalogDataCompress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagValue" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAnalogDataCompressResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetDigitalData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagValue" type="tns:ArrayOfBoolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBoolean">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="boolean" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetDigitalDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetDigitalDataCompress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagValue" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetDigitalDataCompressResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetStringData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagValue" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetStringDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SetStringDataCompress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagValue" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetStringDataCompressResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDigitalDataA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDigitalDataAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDigitalDataAResult" type="tns:DigitalDataGroup_Serialization" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DigitalDataGroup_Serialization">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataSet" type="tns:ArrayOfDigitalDataItem_Serialization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDigitalDataItem_Serialization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DigitalDataItem_Serialization" nillable="true" type="tns:DigitalDataItem_Serialization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DigitalDataItem_Serialization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAnalogDataA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnalogDataAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAnalogDataAResult" type="tns:AnalogDataGroup_Serialization" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AnalogDataGroup_Serialization">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataSet" type="tns:ArrayOfAnalogDataItem_Serialization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnalogDataItem_Serialization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AnalogDataItem_Serialization" nillable="true" type="tns:AnalogDataItem_Serialization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AnalogDataItem_Serialization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetStringDataA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStringDataAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStringDataAResult" type="tns:StringDataGroup_Serialization" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StringDataGroup_Serialization">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataSet" type="tns:ArrayOfStringDataItem_Serialization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStringDataItem_Serialization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StringDataItem_Serialization" nillable="true" type="tns:StringDataItem_Serialization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StringDataItem_Serialization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetObjectDataA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetObjectDataAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetObjectDataAResult" type="tns:ObjectDataGroup_Serialization" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ObjectDataGroup_Serialization">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrganizationId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataSet" type="tns:ArrayOfObjectDataItem_Serialization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfObjectDataItem_Serialization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ObjectDataItem_Serialization" nillable="true" type="tns:ObjectDataItem_Serialization" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ObjectDataItem_Serialization">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDigitalDataS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDigitalDataSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDigitalDataSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnalogDataS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAnalogDataSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAnalogDataSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStringDataS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="myOrganizationId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myTagName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="myKeyword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStringDataSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStringDataSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetAnalogDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SetAnalogData" />
+  </wsdl:message>
+  <wsdl:message name="SetAnalogDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SetAnalogDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetAnalogDataCompressSoapIn">
+    <wsdl:part name="parameters" element="tns:SetAnalogDataCompress" />
+  </wsdl:message>
+  <wsdl:message name="SetAnalogDataCompressSoapOut">
+    <wsdl:part name="parameters" element="tns:SetAnalogDataCompressResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetDigitalDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SetDigitalData" />
+  </wsdl:message>
+  <wsdl:message name="SetDigitalDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SetDigitalDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetDigitalDataCompressSoapIn">
+    <wsdl:part name="parameters" element="tns:SetDigitalDataCompress" />
+  </wsdl:message>
+  <wsdl:message name="SetDigitalDataCompressSoapOut">
+    <wsdl:part name="parameters" element="tns:SetDigitalDataCompressResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetStringDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SetStringData" />
+  </wsdl:message>
+  <wsdl:message name="SetStringDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SetStringDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetStringDataCompressSoapIn">
+    <wsdl:part name="parameters" element="tns:SetStringDataCompress" />
+  </wsdl:message>
+  <wsdl:message name="SetStringDataCompressSoapOut">
+    <wsdl:part name="parameters" element="tns:SetStringDataCompressResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDigitalDataASoapIn">
+    <wsdl:part name="parameters" element="tns:GetDigitalDataA" />
+  </wsdl:message>
+  <wsdl:message name="GetDigitalDataASoapOut">
+    <wsdl:part name="parameters" element="tns:GetDigitalDataAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAnalogDataASoapIn">
+    <wsdl:part name="parameters" element="tns:GetAnalogDataA" />
+  </wsdl:message>
+  <wsdl:message name="GetAnalogDataASoapOut">
+    <wsdl:part name="parameters" element="tns:GetAnalogDataAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStringDataASoapIn">
+    <wsdl:part name="parameters" element="tns:GetStringDataA" />
+  </wsdl:message>
+  <wsdl:message name="GetStringDataASoapOut">
+    <wsdl:part name="parameters" element="tns:GetStringDataAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetObjectDataASoapIn">
+    <wsdl:part name="parameters" element="tns:GetObjectDataA" />
+  </wsdl:message>
+  <wsdl:message name="GetObjectDataASoapOut">
+    <wsdl:part name="parameters" element="tns:GetObjectDataAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDigitalDataSSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDigitalDataS" />
+  </wsdl:message>
+  <wsdl:message name="GetDigitalDataSSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDigitalDataSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAnalogDataSSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAnalogDataS" />
+  </wsdl:message>
+  <wsdl:message name="GetAnalogDataSSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAnalogDataSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStringDataSSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStringDataS" />
+  </wsdl:message>
+  <wsdl:message name="GetStringDataSSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStringDataSResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RealTimeDataSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAnalogData">
+      <wsdl:input message="tns:SetAnalogDataSoapIn" />
+      <wsdl:output message="tns:SetAnalogDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAnalogDataCompress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">需要解压缩</wsdl:documentation>
+      <wsdl:input message="tns:SetAnalogDataCompressSoapIn" />
+      <wsdl:output message="tns:SetAnalogDataCompressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDigitalData">
+      <wsdl:input message="tns:SetDigitalDataSoapIn" />
+      <wsdl:output message="tns:SetDigitalDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDigitalDataCompress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">需要解压缩</wsdl:documentation>
+      <wsdl:input message="tns:SetDigitalDataCompressSoapIn" />
+      <wsdl:output message="tns:SetDigitalDataCompressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStringData">
+      <wsdl:input message="tns:SetStringDataSoapIn" />
+      <wsdl:output message="tns:SetStringDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetStringDataCompress">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">需要解压缩</wsdl:documentation>
+      <wsdl:input message="tns:SetStringDataCompressSoapIn" />
+      <wsdl:output message="tns:SetStringDataCompressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalDataA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得开关量数据,返回数组</wsdl:documentation>
+      <wsdl:input message="tns:GetDigitalDataASoapIn" />
+      <wsdl:output message="tns:GetDigitalDataASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalogDataA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得模拟量数据,返回数组</wsdl:documentation>
+      <wsdl:input message="tns:GetAnalogDataASoapIn" />
+      <wsdl:output message="tns:GetAnalogDataASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStringDataA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得字符串数据,返回数组</wsdl:documentation>
+      <wsdl:input message="tns:GetStringDataASoapIn" />
+      <wsdl:output message="tns:GetStringDataASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectDataA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得object数据,返回数组</wsdl:documentation>
+      <wsdl:input message="tns:GetObjectDataASoapIn" />
+      <wsdl:output message="tns:GetObjectDataASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalDataS">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得开关量数据,返回json</wsdl:documentation>
+      <wsdl:input message="tns:GetDigitalDataSSoapIn" />
+      <wsdl:output message="tns:GetDigitalDataSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalogDataS">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得模拟量数据,返回json</wsdl:documentation>
+      <wsdl:input message="tns:GetAnalogDataSSoapIn" />
+      <wsdl:output message="tns:GetAnalogDataSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStringDataS">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获得字符串数据,返回json</wsdl:documentation>
+      <wsdl:input message="tns:GetStringDataSSoapIn" />
+      <wsdl:output message="tns:GetStringDataSSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RealTimeDataSoap" type="tns:RealTimeDataSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAnalogData">
+      <soap:operation soapAction="http://tempuri.org/SetAnalogData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAnalogDataCompress">
+      <soap:operation soapAction="http://tempuri.org/SetAnalogDataCompress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDigitalData">
+      <soap:operation soapAction="http://tempuri.org/SetDigitalData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDigitalDataCompress">
+      <soap:operation soapAction="http://tempuri.org/SetDigitalDataCompress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStringData">
+      <soap:operation soapAction="http://tempuri.org/SetStringData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStringDataCompress">
+      <soap:operation soapAction="http://tempuri.org/SetStringDataCompress" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalDataA">
+      <soap:operation soapAction="http://tempuri.org/GetDigitalDataA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalogDataA">
+      <soap:operation soapAction="http://tempuri.org/GetAnalogDataA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStringDataA">
+      <soap:operation soapAction="http://tempuri.org/GetStringDataA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectDataA">
+      <soap:operation soapAction="http://tempuri.org/GetObjectDataA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalDataS">
+      <soap:operation soapAction="http://tempuri.org/GetDigitalDataS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalogDataS">
+      <soap:operation soapAction="http://tempuri.org/GetAnalogDataS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStringDataS">
+      <soap:operation soapAction="http://tempuri.org/GetStringDataS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RealTimeDataSoap12" type="tns:RealTimeDataSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAnalogData">
+      <soap12:operation soapAction="http://tempuri.org/SetAnalogData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAnalogDataCompress">
+      <soap12:operation soapAction="http://tempuri.org/SetAnalogDataCompress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDigitalData">
+      <soap12:operation soapAction="http://tempuri.org/SetDigitalData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDigitalDataCompress">
+      <soap12:operation soapAction="http://tempuri.org/SetDigitalDataCompress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStringData">
+      <soap12:operation soapAction="http://tempuri.org/SetStringData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetStringDataCompress">
+      <soap12:operation soapAction="http://tempuri.org/SetStringDataCompress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalDataA">
+      <soap12:operation soapAction="http://tempuri.org/GetDigitalDataA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalogDataA">
+      <soap12:operation soapAction="http://tempuri.org/GetAnalogDataA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStringDataA">
+      <soap12:operation soapAction="http://tempuri.org/GetStringDataA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetObjectDataA">
+      <soap12:operation soapAction="http://tempuri.org/GetObjectDataA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDigitalDataS">
+      <soap12:operation soapAction="http://tempuri.org/GetDigitalDataS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnalogDataS">
+      <soap12:operation soapAction="http://tempuri.org/GetAnalogDataS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStringDataS">
+      <soap12:operation soapAction="http://tempuri.org/GetStringDataS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RealTimeData">
+    <wsdl:port name="RealTimeDataSoap" binding="tns:RealTimeDataSoap">
+      <soap:address location="http://192.168.101.212/WebService/RealTimeData.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RealTimeDataSoap12" binding="tns:RealTimeDataSoap12">
+      <soap12:address location="http://192.168.101.212/WebService/RealTimeData.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

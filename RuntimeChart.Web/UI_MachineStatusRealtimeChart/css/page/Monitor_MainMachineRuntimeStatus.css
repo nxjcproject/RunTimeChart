@@ -1,0 +1,96 @@
+﻿tr {
+    border: 0px;
+    margin: 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    padding: 0px;
+}
+
+td {
+    border: 0px;
+    margin: 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    padding: 0px;
+}
+
+table {
+    border: 0px;
+    margin: 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    padding: 0px;
+}
+
+#TableContentDiv {
+    width: 1100px;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+}
+
+#ChartContentTable td {
+    font-family: SimSun;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.BlankRow {
+    height: 5px;
+}
+.MainTitleRow {
+    height:27px;
+    font-size:15pt;
+    font-family:SimSun;
+    font-weight:bold;
+    color:black;
+    text-align:center;
+    vertical-align:top;
+}
+.CompanyNameTitleTd {
+    width: 77px;
+    height: 25px;
+    background-color: #eeeeff;
+    border: 1px #cccccc solid;
+}
+
+.CompanyNameTd {
+    background-color: #eeeeff;
+    border: 1px #cccccc solid;
+}
+.SubTitleTd {
+    width: 35px;
+    height: 25px;
+    background-color: #eeeeff;
+    border: 1px #cccccc solid;
+}
+.StatusTd {
+    width: 69px;
+    border: 1px #cccccc solid;
+}
+
+.CementProductionLineNameTd {
+    background-color: #eeeeff;
+    border: 1px #cccccc solid;
+}
+.CogenerationProductionLineNameTd {
+    background-color: #eeeeff;
+    border: 1px #cccccc solid;
+}
+
+.SingleTag {
+    width: 30px;
+    height: 21px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 1px;
+}
+.MultiTags {
+    width: 30px;
+    height: 21px;
+    float: left;
+    margin-left: 3px;
+    margin-top: 1px;
+}

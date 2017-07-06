@@ -197,7 +197,7 @@ function SetEquipmentHtml() {
                                                   + '","VariableName":"' + value["cogeneration"][i]["VariableName"]
                                                   + '","ValidValues":"' + value["cogeneration"][i]["ValidValues"]
                                                   + '"}\' onclick=\'GetEquipmentInfo(this,"' + key + '");\' />';
-            m_CogenerationRowHtml.push('<td class="SubTitleTd">' + value["cogeneration"][i]['EquipmentName'].replace('余热','') + '</td><td class="StatusTd">' + m_CogenerationGrindHtml + '</td>');
+            m_CogenerationRowHtml.push('<td class="SubTitleTd">' + value["cogeneration"][i]['EquipmentName'].replace('余热发电','') + '</td><td class="StatusTd">' + m_CogenerationGrindHtml + '</td>');
         }
         ///////////////生成第一行Html////////////////
         if (m_FirstRowFlag == true) {
@@ -345,7 +345,7 @@ function SetEquipmentStatus() {
         if (RuntimeData != null) {
             $.each(RuntimeData, function (Key, Value) {
                 var m_Obj = $(document.getElementById(Key));
-                if (m_Obj != undefined && m_Obj != null) {
+                if (m_Obj != undefined && m_Obj != null && m_Obj.data("options") != undefined) {
                     if (m_Obj.data("options").ValidValues.toLowerCase() != Value.toLowerCase()) {           //判断信号是否运行
                         if (m_Obj.attr("src") != "images/page/GreenButton.png") {
                             m_Obj.attr("src", "images/page/GreenButton.png");

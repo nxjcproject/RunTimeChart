@@ -19,7 +19,7 @@ namespace RuntimeChart.Web.UI_MachineStatusRealtimeChart
             {
 #if DEBUG
                 ////////////////////调试用,自定义的数据授权
-                List<string> m_DataValidIdItems = new List<string>() { "zc_nxjc_qtx", "zc_nxjc_tsc", "zc_nxjc_byc", "zc_nxjc_ychc", "zc_nxjc_szsc", "zc_nxjc_klqc", "zc_nxjc_znc" };
+                List<string> m_DataValidIdItems = new List<string>() { "zc_nxjc_qtx", "zc_nxjc_tsc", "zc_nxjc_byc", "zc_nxjc_ychc", "zc_nxjc_szsc", "zc_nxjc_klqc", "zc_nxjc_znc", "zc_nxjc_znc", "zc_nxjc_whsmc" };
                 //List<string> m_DataValidIdItems = new List<string>() {"zc_nxjc_byc"};
                 AddDataValidIdGroup("ProductionOrganization", m_DataValidIdItems);
 #elif RELEASE
@@ -34,7 +34,9 @@ namespace RuntimeChart.Web.UI_MachineStatusRealtimeChart
             string m_ReturnString = "";
             List<string> m_OrganizationIdArray = GetDataValidIdGroup("ProductionOrganization");
             DataTable m_EquipmentParameters = RuntimeChart.Service.Monitor_MainMachineRuntimeStatus.GetEquipmentParameters(myEquipmentCommonIds, m_OrganizationIdArray.ToArray());
-            m_ReturnString = RuntimeChart.Service.Monitor_MainMachineRuntimeStatus.GetEquipmentRunTags(m_EquipmentParameters);
+            DataTable m_EquipmentParametersAll = RuntimeChart.Service.Monitor_MainMachineRuntimeStatus.GetParametersCogeneration(m_EquipmentParameters);
+
+            m_ReturnString = RuntimeChart.Service.Monitor_MainMachineRuntimeStatus.GetEquipmentRunTags(m_EquipmentParametersAll);
             return m_ReturnString;
         }
          [WebMethod]

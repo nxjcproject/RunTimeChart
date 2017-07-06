@@ -40,6 +40,7 @@ namespace RuntimeChart.Service
 	                          ,C.TableName
 	                          ,M.MeterDatabase
 	                          ,C.ValidValues
+                              ,A.DisplayIndex
                           FROM equipment_EquipmentDetail A, equipment_EquipmentCommonInfo B, system_MasterMachineDescription C, system_Organization D, system_Database M, system_Organization E
                           left join system_Organization F on CHARINDEX(E.LevelCode, F.LevelCode) > 0 and F.LevelType = 'Company'
                           where A.Enabled = 1
@@ -203,9 +204,16 @@ namespace RuntimeChart.Service
                 }
             }
             ServiceReference_RealTimeTagValue.DigitalDataGroup_Serialization m_DigitalDataGroup_Serialization = realTimeDataSoapClientTest.GetDigitalDataA(organizationId, boolTagArray, "HTKJ2016_#*?");
+            //余热发电转速模拟量
+            ServiceReference_RealTimeTagValue.AnalogDataGroup_Serialization m_AnalogDataGroup_Serialization = realTimeDataSoapClientTest.GetAnalogDataA(organizationId, boolTagArray, "HTKJ2016_#*?");
             foreach (ServiceReference_RealTimeTagValue.DigitalDataItem_Serialization item in m_DigitalDataGroup_Serialization.DataSet)
             {
                 tagDataDic[organizationId + ">" + item.ID] = item.Value;
+            }
+            //余热发电转速模拟量
+            foreach (ServiceReference_RealTimeTagValue.AnalogDataItem_Serialization item in m_AnalogDataGroup_Serialization.DataSet)
+            {
+                tagDataDic[organizationId + ">" + item.ID] = item.Value > 300 ? true : false;
             }
         }
         public static Dictionary<string, bool> GetEquipmentHaltStatus(string myTags)
@@ -315,6 +323,38 @@ namespace RuntimeChart.Service
             catch
             {
                 return m_ReturnString;
+            }
+        }
+        /// <summary>
+        /// 余热发电标签直接写死
+        /// </summary>
+        /// <param name="myEquipmentParameters"></param>
+        public static DataTable GetParametersCogeneration(DataTable myEquipmentParameters)
+        {
+            if (myEquipmentParameters != null)
+            {
+                DataRow[] m_EquipmentParametersDataRows = myEquipmentParameters.Select("ProductionLineType <> '余热发电'");
+                DataTable m_EquipmentParametersDataTable = m_EquipmentParametersDataRows.CopyToDataTable();
+
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration01", "1#余热发电", "Generator", "zc_nxjc_byc_byf", "zc_nxjc_byc_byf_cogeneration01", "", "O030101", "1#余热发电", "余热发电", "O03", "白银公司", "F_505SEA_R", "zc_nxjc_byc_byf_dcs02", "ProcessVariable01", "zc_nxjc_byc_byf", 0, 901);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration02", "1#余热发电", "Generator", "zc_nxjc_ychc_yfcf", "zc_nxjc_ychc_yfcf_cogeneration01", "", "O040106", "1#余热发电", "余热发电", "O04", "银川公司", "TSIS01A_R", "zc_nxjc_ychc_yfcf_dcs03", "ProcessVariable05", "zc_nxjc_ychc_yfcf", 0, 901);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration03", "2#余热发电", "Generator", "zc_nxjc_ychc_lsf", "zc_nxjc_ychc_lsf_cogeneration02", "", "O040306", "2#余热发电", "余热发电", "O04", "银川公司", "TSIS01A_R", "zc_nxjc_ychc_lsf_dcs05", "ProcessVariable04", "zc_nxjc_ychc_lsf", 0, 902);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration04", "3#余热发电", "Generator", "zc_nxjc_ychc_lsf", "zc_nxjc_ychc_lsf_cogeneration03", "", "O040307", "3#余热发电", "余热发电", "O04", "银川公司", "F_4TSIS01A_R", "zc_nxjc_ychc_lsf_dcs06", "ProcessVariable01", "zc_nxjc_ychc_lsf", 0, 903);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration05", "1#余热发电", "Generator", "zc_nxjc_tsc_tsf", "zc_nxjc_tsc_tsf_cogeneration01", "", "O050105", "1#余热发电", "余热发电", "O05", "天水公司", "F_120TR1SE1_R", "zc_nxjc_tsc_tsf_dcs03", "ProcessVariable02", "zc_nxjc_tsc_tsf", 0, 901);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration06", "1#余热发电", "Generator", "zc_nxjc_klqc_klqf", "zc_nxjc_klqc_klqf_cogeneration01", "", "O070105", "1#余热发电", "余热发电", "O07", "喀喇沁公司", "F_505SEA_R", "zc_nxjc_klqc_klqf_dcs02", "ProcessVariable05", "zc_nxjc_klqc_klqf", 0, 901);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration07", "1#余热发电", "Generator", "zc_nxjc_whsmc_whsmf", "zc_nxjc_whsmc_whsmf_cogeneration01", "", "O100103", "1#余热发电", "余热发电", "O10", "乌海赛马公司", "F_23SI04_03_R", "zc_nxjc_whsmc_whsmf_dcs02", "ProcessVariable04", "zc_nxjc_whsmc_whsmf", 0, 901);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration08", "1#余热发电", "Generator", "zc_nxjc_qtx_efc", "zc_nxjc_qtx_efc_cogeneration01", "", "O020102", "1#余热发电", "余热发电", "O02", "青铜峡公司", "TSIA03_AI", "Db_02_01_Cogeneration01", "ProcessVariable04", "Db_02_01", 0, 901);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration09", "2#余热发电", "Generator", "zc_nxjc_qtx_efc", "zc_nxjc_qtx_efc_cogeneration02", "", "O020104", "2#余热发电", "余热发电", "O02", "青铜峡公司", "AI1_TSE03", "Db_02_01_Cogeneration02", "ProcessVariable02", "Db_02_01", 0, 902);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration10", "3#余热发电", "Generator", "zc_nxjc_qtx_tys", "zc_nxjc_qtx_tys_cogeneration03", "", "O020202", "3#余热发电", "余热发电", "O02", "青铜峡公司", "TSIS01A_R", "zc_nxjc_qtx_tys_dcs03", "ProcessVariable01", "zc_nxjc_qtx_tys", 0, 903);
+                m_EquipmentParametersDataTable.Rows.Add("Cogeneration11", "4#余热发电", "Generator", "zc_nxjc_qtx_tys", "zc_nxjc_qtx_tys_cogeneration04", "", "O020204", "4#余热发电", "余热发电", "O02", "青铜峡公司", "F_2TSE03_R", "zc_nxjc_qtx_tys_dcs04", "ProcessVariable01", "zc_nxjc_qtx_tys", 0, 904);
+                
+                DataView m_EquipmentParametersDataView = m_EquipmentParametersDataTable.DefaultView;
+                m_EquipmentParametersDataView.Sort = "CompanyLevelCode, ProductionLevelCode, DisplayIndex";
+                return m_EquipmentParametersDataView.ToTable();
+            }
+            else
+            {
+                return myEquipmentParameters;
             }
         }
     }

@@ -34,7 +34,7 @@ namespace RuntimeChart.Service
 	                          ,replace(replace(replace(replace(D.Name,'号','#'),'窑',''),'熟料',''),'线','') as ProductionLineName
                               ,D.Type as ProductionLineType
 	                          ,F.LevelCode as CompanyLevelCode
-	                          ,F.Name as CompanyName
+	                          ,replace(F.Name,'公司','') as CompanyName
 	                          ,C.VariableName
 	                          ,C.DataBaseName
 	                          ,C.TableName
@@ -329,25 +329,154 @@ namespace RuntimeChart.Service
         /// 余热发电标签直接写死
         /// </summary>
         /// <param name="myEquipmentParameters"></param>
-        public static DataTable GetParametersCogeneration(DataTable myEquipmentParameters)
+        public static DataTable GetParametersCogeneration(DataTable myEquipmentParameters, string[] myOrganizationIdArray)
         {
             if (myEquipmentParameters != null)
             {
                 DataRow[] m_EquipmentParametersDataRows = myEquipmentParameters.Select("ProductionLineType <> '余热发电'");
                 DataTable m_EquipmentParametersDataTable = m_EquipmentParametersDataRows.CopyToDataTable();
 
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration01", "1#余热发电", "Generator", "zc_nxjc_byc_byf", "zc_nxjc_byc_byf_cogeneration01", "", "O030101", "1#余热发电", "余热发电", "O03", "白银公司", "F_505SEA_R", "zc_nxjc_byc_byf_dcs02", "ProcessVariable01", "zc_nxjc_byc_byf", 0, 901);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration02", "1#余热发电", "Generator", "zc_nxjc_ychc_yfcf", "zc_nxjc_ychc_yfcf_cogeneration01", "", "O040106", "1#余热发电", "余热发电", "O04", "银川公司", "TSIS01A_R", "zc_nxjc_ychc_yfcf_dcs03", "ProcessVariable05", "zc_nxjc_ychc_yfcf", 0, 901);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration03", "2#余热发电", "Generator", "zc_nxjc_ychc_lsf", "zc_nxjc_ychc_lsf_cogeneration02", "", "O040306", "2#余热发电", "余热发电", "O04", "银川公司", "TSIS01A_R", "zc_nxjc_ychc_lsf_dcs05", "ProcessVariable04", "zc_nxjc_ychc_lsf", 0, 902);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration04", "3#余热发电", "Generator", "zc_nxjc_ychc_lsf", "zc_nxjc_ychc_lsf_cogeneration03", "", "O040307", "3#余热发电", "余热发电", "O04", "银川公司", "F_4TSIS01A_R", "zc_nxjc_ychc_lsf_dcs06", "ProcessVariable01", "zc_nxjc_ychc_lsf", 0, 903);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration05", "1#余热发电", "Generator", "zc_nxjc_tsc_tsf", "zc_nxjc_tsc_tsf_cogeneration01", "", "O050105", "1#余热发电", "余热发电", "O05", "天水公司", "F_120TR1SE1_R", "zc_nxjc_tsc_tsf_dcs03", "ProcessVariable02", "zc_nxjc_tsc_tsf", 0, 901);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration06", "1#余热发电", "Generator", "zc_nxjc_klqc_klqf", "zc_nxjc_klqc_klqf_cogeneration01", "", "O070105", "1#余热发电", "余热发电", "O07", "喀喇沁公司", "F_505SEA_R", "zc_nxjc_klqc_klqf_dcs02", "ProcessVariable05", "zc_nxjc_klqc_klqf", 0, 901);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration07", "1#余热发电", "Generator", "zc_nxjc_whsmc_whsmf", "zc_nxjc_whsmc_whsmf_cogeneration01", "", "O100103", "1#余热发电", "余热发电", "O10", "乌海赛马公司", "F_23SI04_03_R", "zc_nxjc_whsmc_whsmf_dcs02", "ProcessVariable04", "zc_nxjc_whsmc_whsmf", 0, 901);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration08", "1#余热发电", "Generator", "zc_nxjc_qtx_efc", "zc_nxjc_qtx_efc_cogeneration01", "", "O020102", "1#余热发电", "余热发电", "O02", "青铜峡公司", "TSIA03_AI", "Db_02_01_Cogeneration01", "ProcessVariable04", "Db_02_01", 0, 901);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration09", "2#余热发电", "Generator", "zc_nxjc_qtx_efc", "zc_nxjc_qtx_efc_cogeneration02", "", "O020104", "2#余热发电", "余热发电", "O02", "青铜峡公司", "AI1_TSE03", "Db_02_01_Cogeneration02", "ProcessVariable02", "Db_02_01", 0, 902);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration10", "3#余热发电", "Generator", "zc_nxjc_qtx_tys", "zc_nxjc_qtx_tys_cogeneration03", "", "O020202", "3#余热发电", "余热发电", "O02", "青铜峡公司", "TSIS01A_R", "zc_nxjc_qtx_tys_dcs03", "ProcessVariable01", "zc_nxjc_qtx_tys", 0, 903);
-                m_EquipmentParametersDataTable.Rows.Add("Cogeneration11", "4#余热发电", "Generator", "zc_nxjc_qtx_tys", "zc_nxjc_qtx_tys_cogeneration04", "", "O020204", "4#余热发电", "余热发电", "O02", "青铜峡公司", "F_2TSE03_R", "zc_nxjc_qtx_tys_dcs04", "ProcessVariable01", "zc_nxjc_qtx_tys", 0, 904);
+                string m_OrganizationString = "";
+                string m_StationString = "";
+                string m_Sql = @"SELECT A.OrganizationId as EquipmentId
+                              ,replace(A.Name,'号','#') as EquipmentName
+                              ,'Generator' as EquipmentCommonId
+	                          ,E.OrganizationID as FactoryOrganizationId
+                              ,C.OrganizationID as OrganizationId
+                              ,'' as Specifications
+                              ,A.LevelCode as ProductionLevelCode
+	                          ,replace(A.Name,'号','#')  as ProductionLineName
+                              ,A.Type as ProductionLineType
+	                          ,D.LevelCode as CompanyLevelCode
+	                          ,replace(D.Name,'公司','') as CompanyName
+	                          ,'' as VariableName
+	                          ,'' as DataBaseName
+	                          ,'' as TableName
+	                          ,B.MeterDatabase
+	                          ,0 as ValidValues
+                              ,99 as DisplayIndex
+                          FROM system_Organization A
+                          left join system_Organization D on CHARINDEX(D.LevelCode, A.LevelCode) > 0 and D.LevelType = 'Company'
+                          left join system_Organization E on CHARINDEX(E.LevelCode, A.LevelCode) > 0 and E.LevelType = 'Factory'
+                          , system_Database B, system_Organization C
+                          where C.OrganizationID in ({0})
+                          {1}
+                          and A.DatabaseID = B.DatabaseID
+                          and A.LevelCode like C.LevelCode + '%'
+                          and A.type = '余热发电'
+                          order by A.LevelCode";
+                if (myOrganizationIdArray != null)
+                {
+                    for (int i = 0; i < myOrganizationIdArray.Length; i++)
+                    {
+                        if (i == 0)
+                        {
+                            m_OrganizationString = "'" + myOrganizationIdArray[i] + "'";
+                        }
+                        else
+                        {
+                            m_OrganizationString = m_OrganizationString + ",'" + myOrganizationIdArray[i] + "'";
+                        }
+                    }
+                    if (_stationId != "zc_nxjc" && _stationId != "")
+                    {
+                        m_StationString = string.Format(" and E.OrganizationID = '{0}' ", _stationId);
+                    }
+                    m_Sql = string.Format(m_Sql, m_OrganizationString, m_StationString);
+                    try
+                    {
+                        DataTable m_CogenerationParametersTable = _dataFactory.Query(m_Sql);
+                        if (m_CogenerationParametersTable != null)
+                        {
+                            for (int i = 0; i < m_CogenerationParametersTable.Rows.Count; i++)
+                            {
+                                switch (m_CogenerationParametersTable.Rows[i]["EquipmentId"].ToString())
+                                {
+                                    case "zc_nxjc_byc_byf_cogeneration01":         //白银
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "F_505SEA_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_byc_byf_dcs02";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable01";
+                                        break;
+                                    case "zc_nxjc_ychc_yfcf_cogeneration01":         //银川公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "TSIS01A_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_ychc_yfcf_dcs03";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable05";
+                                        break;
+                                    case "zc_nxjc_ychc_lsf_cogeneration02":         //银川公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "TSIS01A_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_ychc_lsf_dcs05";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable04";
+                                        break;
+                                    case "zc_nxjc_ychc_lsf_cogeneration03":         //银川公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "F_4TSIS01A_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_ychc_lsf_dcs06";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable01";
+                                        break;
+                                    case "zc_nxjc_tsc_tsf_cogeneration01":         //天水公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "F_120TR1SE1_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_tsc_tsf_dcs03";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable02";
+                                        break;
+                                    case "zc_nxjc_klqc_klqf_cogeneration01":         //喀喇沁公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "F_505SEA_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_klqc_klqf_dcs02";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable05";
+                                        break;
+                                    case "zc_nxjc_whsmc_whsmf_cogeneration01":         //乌海赛马公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "F_23SI04_03_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_whsmc_whsmf_dcs02";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable04";
+                                        break;
+                                    case "zc_nxjc_qtx_efc_cogeneration01":         //青铜峡公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "TSIA03_AI";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "Db_02_01_Cogeneration01";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable04";
+                                        break;
+                                    case "zc_nxjc_qtx_efc_cogeneration02":         //青铜峡公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "AI1_TSE03";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "Db_02_01_Cogeneration02";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable02";
+                                        break;
+                                    case "zc_nxjc_qtx_tys_cogeneration03":         //青铜峡公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "TSIS01A_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_qtx_tys_dcs03";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable01";
+                                        break;
+                                    case "zc_nxjc_qtx_tys_cogeneration04":         //青铜峡公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "F_2TSE03_R";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_qtx_tys_dcs04";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable01";
+                                        break;
+                                    case "zc_nxjc_znc_znf_cogeneration01":         //中宁公司
+                                        m_CogenerationParametersTable.Rows[i]["VariableName"] = "TSI1102";
+                                        m_CogenerationParametersTable.Rows[i]["DataBaseName"] = "zc_nxjc_znc_znf_dcs03";
+                                        m_CogenerationParametersTable.Rows[i]["TableName"] = "ProcessVariable01";
+                                        break;
+                                }
+                                m_EquipmentParametersDataTable.Rows.Add(m_CogenerationParametersTable.Rows[i].ItemArray);
+                            }
+                        }
+
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration01", "1#余热发电", "Generator", "zc_nxjc_byc_byf", "zc_nxjc_byc_byf_cogeneration01", "", "O030101", "1#余热发电", "余热发电", "O03", "白银公司", "F_505SEA_R", "zc_nxjc_byc_byf_dcs02", "ProcessVariable01", "zc_nxjc_byc_byf", 0, 901);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration02", "1#余热发电", "Generator", "zc_nxjc_ychc_yfcf", "zc_nxjc_ychc_yfcf_cogeneration01", "", "O040106", "1#余热发电", "余热发电", "O04", "银川公司", "TSIS01A_R", "zc_nxjc_ychc_yfcf_dcs03", "ProcessVariable05", "zc_nxjc_ychc_yfcf", 0, 901);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration03", "2#余热发电", "Generator", "zc_nxjc_ychc_lsf", "zc_nxjc_ychc_lsf_cogeneration02", "", "O040306", "2#余热发电", "余热发电", "O04", "银川公司", "TSIS01A_R", "zc_nxjc_ychc_lsf_dcs05", "ProcessVariable04", "zc_nxjc_ychc_lsf", 0, 902);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration04", "3#余热发电", "Generator", "zc_nxjc_ychc_lsf", "zc_nxjc_ychc_lsf_cogeneration03", "", "O040307", "3#余热发电", "余热发电", "O04", "银川公司", "F_4TSIS01A_R", "zc_nxjc_ychc_lsf_dcs06", "ProcessVariable01", "zc_nxjc_ychc_lsf", 0, 903);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration05", "1#余热发电", "Generator", "zc_nxjc_tsc_tsf", "zc_nxjc_tsc_tsf_cogeneration01", "", "O050105", "1#余热发电", "余热发电", "O05", "天水公司", "F_120TR1SE1_R", "zc_nxjc_tsc_tsf_dcs03", "ProcessVariable02", "zc_nxjc_tsc_tsf", 0, 901);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration06", "1#余热发电", "Generator", "zc_nxjc_klqc_klqf", "zc_nxjc_klqc_klqf_cogeneration01", "", "O070105", "1#余热发电", "余热发电", "O07", "喀喇沁公司", "F_505SEA_R", "zc_nxjc_klqc_klqf_dcs02", "ProcessVariable05", "zc_nxjc_klqc_klqf", 0, 901);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration07", "1#余热发电", "Generator", "zc_nxjc_whsmc_whsmf", "zc_nxjc_whsmc_whsmf_cogeneration01", "", "O100103", "1#余热发电", "余热发电", "O10", "乌海赛马公司", "F_23SI04_03_R", "zc_nxjc_whsmc_whsmf_dcs02", "ProcessVariable04", "zc_nxjc_whsmc_whsmf", 0, 901);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration08", "1#余热发电", "Generator", "zc_nxjc_qtx_efc", "zc_nxjc_qtx_efc_cogeneration01", "", "O020102", "1#余热发电", "余热发电", "O02", "青铜峡公司", "TSIA03_AI", "Db_02_01_Cogeneration01", "ProcessVariable04", "Db_02_01", 0, 901);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration09", "2#余热发电", "Generator", "zc_nxjc_qtx_efc", "zc_nxjc_qtx_efc_cogeneration02", "", "O020104", "2#余热发电", "余热发电", "O02", "青铜峡公司", "AI1_TSE03", "Db_02_01_Cogeneration02", "ProcessVariable02", "Db_02_01", 0, 902);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration10", "3#余热发电", "Generator", "zc_nxjc_qtx_tys", "zc_nxjc_qtx_tys_cogeneration03", "", "O020202", "3#余热发电", "余热发电", "O02", "青铜峡公司", "TSIS01A_R", "zc_nxjc_qtx_tys_dcs03", "ProcessVariable01", "zc_nxjc_qtx_tys", 0, 903);
+                        //m_EquipmentParametersDataTable.Rows.Add("Cogeneration11", "4#余热发电", "Generator", "zc_nxjc_qtx_tys", "zc_nxjc_qtx_tys_cogeneration04", "", "O020204", "4#余热发电", "余热发电", "O02", "青铜峡公司", "F_2TSE03_R", "zc_nxjc_qtx_tys_dcs04", "ProcessVariable01", "zc_nxjc_qtx_tys", 0, 904);
                 
+
+                    }
+                    catch
+                    {
+                    }
+                }
+
+
                 DataView m_EquipmentParametersDataView = m_EquipmentParametersDataTable.DefaultView;
                 m_EquipmentParametersDataView.Sort = "CompanyLevelCode, ProductionLevelCode, DisplayIndex";
                 return m_EquipmentParametersDataView.ToTable();

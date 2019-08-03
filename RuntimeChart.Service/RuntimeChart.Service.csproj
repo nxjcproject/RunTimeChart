@@ -42,8 +42,9 @@
     <Reference Include="SqlServerDataAdapter">
       <HintPath>..\..\Lib\SqlServerDataAdapter.dll</HintPath>
     </Reference>
-    <Reference Include="StaffAssessment">
-      <HintPath>..\..\..\组件\StaffAssessment\test\bin\Debug\StaffAssessment.dll</HintPath>
+    <Reference Include="StaffAssessment, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\StaffAssessment.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
